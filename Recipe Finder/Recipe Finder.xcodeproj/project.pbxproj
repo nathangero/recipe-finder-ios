@@ -17,6 +17,7 @@
 		153A06952C45A40000E3B646 /* Recipe_FinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A06942C45A40000E3B646 /* Recipe_FinderUITests.swift */; };
 		153A06972C45A40000E3B646 /* Recipe_FinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A06962C45A40000E3B646 /* Recipe_FinderUITestsLaunchTests.swift */; };
 		153A06A82C45A5B100E3B646 /* HomeScreen_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A06A72C45A5B100E3B646 /* HomeScreen_ViewModel.swift */; };
+		153A06AC2C45AA8100E3B646 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153A06AB2C45AA8100E3B646 /* Api.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		153A06942C45A40000E3B646 /* Recipe_FinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe_FinderUITests.swift; sourceTree = "<group>"; };
 		153A06962C45A40000E3B646 /* Recipe_FinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe_FinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		153A06A72C45A5B100E3B646 /* HomeScreen_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen_ViewModel.swift; sourceTree = "<group>"; };
+		153A06AB2C45AA8100E3B646 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				153A06A32C45A50600E3B646 /* Views */,
 				153A06A42C45A50C00E3B646 /* ViewModels */,
 				153A06782C45A40000E3B646 /* Assets.xcassets */,
+				153A06AB2C45AA8100E3B646 /* Api.swift */,
 				153A067D2C45A40000E3B646 /* Persistence.swift */,
 				153A067F2C45A40000E3B646 /* Recipe_Finder.xcdatamodeld */,
 				153A067A2C45A40000E3B646 /* Preview Content */,
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				153A06AC2C45AA8100E3B646 /* Api.swift in Sources */,
 				153A067E2C45A40000E3B646 /* Persistence.swift in Sources */,
 				153A06A82C45A5B100E3B646 /* HomeScreen_ViewModel.swift in Sources */,
 				153A06812C45A40000E3B646 /* Recipe_Finder.xcdatamodeld in Sources */,
