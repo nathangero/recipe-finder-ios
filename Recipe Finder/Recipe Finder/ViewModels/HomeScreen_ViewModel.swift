@@ -14,7 +14,6 @@ extension HomeScreen {
         var desserts: MealList?
         
         func fetchDesserts() async throws {
-            print("@fetchDesserts")
             let urlString = API_DESSERTS
             
             guard let url = URL(string: urlString) else {
@@ -36,8 +35,6 @@ extension HomeScreen {
             
             let meals = try JSONDecoder().decode(MealList.self, from: data)
             desserts = meals
-            
-            try await fetchRecipe(with: "52768")
         }
         
         
