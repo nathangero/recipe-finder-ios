@@ -14,7 +14,21 @@ struct HomeScreen: View {
     // MARK: - Body
     
     var body: some View {
-        Text("home Screen")
+        VStack {
+            Button(action: { Task {
+                try await viewModel.fetchDesserts()
+            }}) {
+                Text("Show Desserts")
+                    .font(.title)
+            }
+            .padding()
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.blue, lineWidth: 1.0)
+            )
+            
+            Spacer()
+        }
     }
     
     

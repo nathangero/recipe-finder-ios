@@ -13,8 +13,8 @@ extension HomeScreen {
         
         var desserts = [String: Any]()
         
-        func fetchDesserts() {
-            
+        func fetchDesserts() async throws {
+            print("@fetchDesserts")
         }
     }
 }
