@@ -32,4 +32,16 @@ struct MealListItem: Identifiable, Codable, DictionaryConvertible {
         strMealThumb = try container.decode(String.self, forKey: .strMealThumb)
         idMeal = try container.decode(String.self, forKey: .idMeal)
     }
+    
+    init(_ meal: String, _ thumbnail: String, _ mealId: String) {
+        id = UUID()
+        strMeal = meal
+        strMealThumb = thumbnail
+        idMeal = mealId
+    }
+    
+    
+    func getMock() -> MealListItem {
+        return MealListItem("Apple Frangipan Tart", "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg", "52768")
+    }
 }

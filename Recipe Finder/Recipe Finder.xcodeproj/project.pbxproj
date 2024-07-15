@@ -22,6 +22,7 @@
 		15CB8B972C45ADDF004C98A2 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CB8B962C45ADDF004C98A2 /* Meal.swift */; };
 		15CB8B992C45ADE9004C98A2 /* MealList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CB8B982C45ADE9004C98A2 /* MealList.swift */; };
 		15CB8B9C2C45ADF6004C98A2 /* DictionaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CB8B9A2C45ADF6004C98A2 /* DictionaryConvertible.swift */; };
+		15CB8B9E2C45B805004C98A2 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CB8B9D2C45B805004C98A2 /* Card.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		15CB8B962C45ADDF004C98A2 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		15CB8B982C45ADE9004C98A2 /* MealList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealList.swift; sourceTree = "<group>"; };
 		15CB8B9A2C45ADF6004C98A2 /* DictionaryConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryConvertible.swift; sourceTree = "<group>"; };
+		15CB8B9D2C45B805004C98A2 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				153A06762C45A3FF00E3B646 /* HomeScreen.swift */,
+				15CB8B9D2C45B805004C98A2 /* Card.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				153A06772C45A3FF00E3B646 /* HomeScreen.swift in Sources */,
 				153A06752C45A3FF00E3B646 /* Recipe_FinderApp.swift in Sources */,
 				15CB8B992C45ADE9004C98A2 /* MealList.swift in Sources */,
+				15CB8B9E2C45B805004C98A2 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

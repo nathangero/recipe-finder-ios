@@ -14,7 +14,7 @@ struct HomeScreen: View {
     // MARK: - Body
     
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             Button(action: { Task {
                 try await viewModel.fetchDesserts()
             }}) {
@@ -26,6 +26,14 @@ struct HomeScreen: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.blue, lineWidth: 1.0)
             )
+            
+            if let desserts = viewModel.desserts {
+                List(desserts.meals) { dessert in
+                    Card(item: dessert)
+                        .listRowSeparator(.hidden)
+                }
+                .listStyle(.plain)
+            }
             
             Spacer()
         }
