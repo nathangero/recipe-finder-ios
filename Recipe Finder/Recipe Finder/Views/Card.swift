@@ -38,6 +38,8 @@ struct Card: View {
     
     // MARK: - Functions
     
+    /// Fetches the thumbnail .jpg from the api
+    /// - Parameter photoUrl: String. The thumnail url
     private func fetchThumbnail(with photoUrl: String) async throws {
         guard let url = URL(string: photoUrl) else {
             print("couldn't get icon")

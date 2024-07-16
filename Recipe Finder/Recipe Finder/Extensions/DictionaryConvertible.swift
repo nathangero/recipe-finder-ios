@@ -12,6 +12,9 @@ protocol DictionaryConvertible {
 }
 
 extension DictionaryConvertible where Self: Codable {
+    
+    /// Decodes a JSON object into a Swift dictionary
+    /// - Returns: [String: Any]
     func toDictionary() throws -> [String: Any]? {
         let data = try JSONEncoder().encode(self)
         let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)

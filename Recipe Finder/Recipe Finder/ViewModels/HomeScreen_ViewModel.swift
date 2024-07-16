@@ -20,6 +20,8 @@ extension HomeScreen {
         var isShowingRecipe = false
         var isShowingAlert = false
         
+        
+        /// Fetches a list of desserts from the api, then saves it in the `desserts` variable
         func fetchDesserts() async throws {
             let urlString = API_DESSERTS
             
@@ -47,6 +49,9 @@ extension HomeScreen {
         }
         
         
+        /// Uses the `mealId` to get the full recipe of the meal
+        /// - Parameter mealId: String
+        /// - Returns: RecipeList object
         func fetchRecipe(with mealId: String) async throws -> RecipeList {
             let urlString = "\(API_LOOKUP_MEAL_ID)\(mealId)"
             

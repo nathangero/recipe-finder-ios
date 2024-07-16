@@ -61,7 +61,7 @@ struct RecipeView: View {
     
     
     /// Creates an array of strings to iterate over to list step-by-step instructions
-    /// - Parameter str: The instruction string
+    /// - Parameter str: String. The instructions
     /// - Returns: An array of strings
     private func getInstructions(with str: String) -> [String] {
         let separators = CharacterSet(charactersIn: ".\n")
@@ -77,7 +77,7 @@ struct RecipeView: View {
     
     
     /// Fetches the thumbnail of the meal from the api, and saves it to a state variable
-    /// - Parameter photoUrl: The thumnail url from the api
+    /// - Parameter photoUrl: String. The thumnail url from the api
     private func fetchThumbnail(with photoUrl: String) async throws {
         guard let url = URL(string: photoUrl) else {
             print("couldn't get icon")
