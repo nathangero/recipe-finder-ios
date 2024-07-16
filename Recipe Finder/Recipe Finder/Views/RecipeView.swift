@@ -11,30 +11,27 @@ struct RecipeView: View {
     
     @State var title: String = "Full recipe"
     @State var thumbnail: Image?
-    @Binding var isPresented: Bool
     var recipe: RecipeList
     
     // MARK: - Body
     var body: some View {
         VStack {
             List(recipe.meals) { info in
-                Text(info.strMeal)
-                    .font(.title)
+                
+                thumbnail?
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .listRowSeparator(.hidden)
+                
+                Text("Ingredients & Measurements")
+                    .font(.title2)
+                    .underline()
+                    .frame(maxWidth: .infinity, alignment: .center)
                     .onAppear {
                         title = info.strMeal
                         Task { try await fetchThumbnail(with: info.strMealThumb) }
                     }
-                
-                thumbnail?
-                    .resizable()
-                    .padding()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity, alignment: .center)
-                
-                
-                Text("Ingredients and Measurements")
-                    .font(.title2)
-                    .underline()
                 
                 ForEach(info.ingredientsAndMeasurements, id: \.self) { element in
                     Text("\(element.ingredient): \(element.measurement)")
@@ -46,6 +43,7 @@ struct RecipeView: View {
                 Text("Instructions")
                     .font(.title2)
                     .underline()
+                    .frame(maxWidth: .infinity, alignment: .center)
                 
                 ForEach(Array(getInstructions(with: info.strInstructions).enumerated()), id: \.offset) { index, str in
                     Text("\(index + 1)) \(str)")
@@ -56,11 +54,15 @@ struct RecipeView: View {
             .listStyle(.plain)
         }
         .navigationTitle(title)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
     
     // MARK: - Functions
     
+    
+    /// Creates an array of strings to iterate over to list step-by-step instructions
+    /// - Parameter str: String. The instructions
+    /// - Returns: An array of strings
     private func getInstructions(with str: String) -> [String] {
         let separators = CharacterSet(charactersIn: ".\n")
 
@@ -73,6 +75,9 @@ struct RecipeView: View {
         return filteredComponents
     }
     
+    
+    /// Fetches the thumbnail of the meal from the api, and saves it to a state variable
+    /// - Parameter photoUrl: String. The thumnail url from the api
     private func fetchThumbnail(with photoUrl: String) async throws {
         guard let url = URL(string: photoUrl) else {
             print("couldn't get icon")
@@ -101,5 +106,5 @@ struct RecipeView: View {
 
 #Preview {
     @State var stubBool = false
-    return RecipeView(isPresented: $stubBool, recipe: RecipeList())
+    return RecipeView(recipe: RecipeList())
 }
