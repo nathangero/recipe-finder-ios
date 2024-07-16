@@ -17,19 +17,20 @@ struct HomeScreen: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 10) {
-                Button(action: { Task {
-                    try await viewModel.fetchDesserts()
-                }}) {
-                    Text("Show Desserts")
-                        .font(.title)
-                        .padding()
+                if viewModel.desserts?.meals == nil {
+                    Button(action: { Task {
+                        try await viewModel.fetchDesserts()
+                    }}) {
+                        Text("Show Desserts")
+                            .font(.title)
+                            .padding()
+                    }
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.blue, lineWidth: 1.0)
+                    )
                 }
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.blue, lineWidth: 1.0)
-                )
-                
-                recipeList
+                listRecipe
             }
             .navigationDestination(isPresented: $viewModel.isShowingRecipe) {
                 RecipeView(
@@ -50,7 +51,7 @@ struct HomeScreen: View {
     
     
     // MARK: - Views
-    private var recipeList: some View {
+    private var listRecipe: some View {
         VStack {
             if let desserts = viewModel.desserts {
                 List(desserts.meals) { dessert in
@@ -61,30 +62,9 @@ struct HomeScreen: View {
                         .listRowSeparator(.hidden)
                         
                         // Fetches the full recipe then changes screens
-                        Button(action: {
-                            Task {
-                                viewModel.fullRecipe = try await viewModel.fetchRecipe(with: dessert.idMeal)
-                                viewModel.isShowingRecipe = true
-                            }
-                        }) {
-                            HStack {
-                                Spacer()
-                                
-                                Text("Tap to see recipe")
-                                    .font(.title)
-                                    .foregroundStyle(colorScheme == .dark ? .white : .black)
-                                    .padding()
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.blue, lineWidth: 1.0)
-                                    )
-                                    .padding(.bottom)
-                                
-                                Spacer()
-                            }
-                        }
-                        .buttonStyle(PlainButtonStyle()) // Prevents whole item being a button
+                        btnViewRecipe(dessert)
                     }
+                    .listRowSeparator(.hidden)
                     .frame(width: UIScreen.main.bounds.width - 30)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
@@ -97,6 +77,32 @@ struct HomeScreen: View {
         }
     }
     
+    
+    private func btnViewRecipe(_ dessert: MealListItem) -> some View {
+        Button(action: {
+            Task {
+                viewModel.fullRecipe = try await viewModel.fetchRecipe(with: dessert.idMeal)
+                viewModel.isShowingRecipe = true
+            }
+        }) {
+            HStack {
+                Spacer()
+                
+                Text("Tap to see recipe")
+                    .font(.title)
+                    .foregroundStyle(colorScheme == .dark ? .white : .black)
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.blue, lineWidth: 1.0)
+                    )
+                    .padding(.bottom)
+                
+                Spacer()
+            }
+        }
+        .buttonStyle(PlainButtonStyle()) // Prevents whole item being a button
+    }
 }
 
 
