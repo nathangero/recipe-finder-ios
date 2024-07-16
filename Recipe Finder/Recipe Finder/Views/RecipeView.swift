@@ -54,7 +54,7 @@ struct RecipeView: View {
             .listStyle(.plain)
         }
         .navigationTitle(title)
-        .navigationBarTitleDisplayMode(.automatic)
+        .navigationBarTitleDisplayMode(.large)
     }
     
     // MARK: - Functions
