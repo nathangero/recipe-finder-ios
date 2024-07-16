@@ -11,7 +11,9 @@ extension HomeScreen {
     @Observable
     final class ViewModel {
         
+        var fullRecipe = RecipeList()
         var desserts: MealList?
+        var isShowingRecipe = false
         
         func fetchDesserts() async throws {
             let urlString = API_DESSERTS
@@ -38,7 +40,7 @@ extension HomeScreen {
         }
         
         
-        func fetchRecipe(with mealId: String) async throws {
+        func fetchRecipe(with mealId: String) async throws -> RecipeList {
             let urlString = "\(API_LOOKUP_MEAL_ID)\(mealId)"
             
             guard let url = URL(string: urlString) else {
@@ -58,29 +60,10 @@ extension HomeScreen {
                 throw URLError(.badServerResponse)
             }
             
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            let recipe = try JSONDecoder().decode(RecipeList.self, from: data)
+//            print("recipe:", recipe)
             
-            guard let dict = json as? [String: Any] else {
-                print("couldn't serialize", json)
-                throw NSError(domain: "Serialization", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to serialize object to dictionary"])
-            }
-            
-            let meals = dict["meals"] as? Array<Any>
-            let meal = meals?.first as? [String: Any]
-            
-            let filteredDict = meal?.sorted(by: { $0.key < $1.key }).compactMap { element in
-//                print("element:", element)
-                if let strValue = element.value as? String, !strValue.isEmpty {
-                    return [element.key: strValue]
-                }
-                
-                return nil
-            }
-            
-//            print(filteredDict)
-//            for (key, value) in filteredDict!.enumerated() {
-//                print("\(key): \(value)")
-//            }
+            return recipe
         }
     }
 }

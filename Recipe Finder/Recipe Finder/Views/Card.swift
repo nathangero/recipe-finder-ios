@@ -28,18 +28,12 @@ struct Card: View {
                 .padding()
                 .scaledToFit()
                 .frame(maxWidth: .infinity, alignment: .center)
-                
         }
         .onAppear(perform: {
             Task {
                 try await fetchThumbnail(with: item.strMealThumb)
             }
         })
-        .frame(width: UIScreen.main.bounds.width - 30)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(colorScheme == .dark ? .white : .black, lineWidth: 2)
-        )
     }
     
     // MARK: - Functions
@@ -71,5 +65,5 @@ struct Card: View {
 }
 
 #Preview {
-    Card(item: MealListItem().getMock())
+    return Card(item: MealListItem().getMock())
 }
