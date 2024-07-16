@@ -37,6 +37,13 @@ struct HomeScreen: View {
                     recipe: viewModel.fullRecipe
                 )
             }
+            .alert(
+                viewModel.alertTitle,
+                isPresented: $viewModel.isShowingAlert,
+                actions: {
+                    Button(action: {}) { Text("Got it") }
+                },
+                message: { Text(viewModel.alertBody) })
         }
         .navigationTitle("home")
     }
