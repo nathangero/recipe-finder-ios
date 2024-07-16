@@ -70,10 +70,6 @@ extension HomeScreen {
             }
             
             let recipe = try JSONDecoder().decode(RecipeList.self, from: data)
-            guard !recipe.meals.isEmpty else {
-                isShowingAlert = true
-                throw NSError(domain: "Couldn't decode", code: 2)
-            }
 //            print("recipe:", recipe)
             
             return recipe

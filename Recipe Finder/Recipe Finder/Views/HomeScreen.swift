@@ -34,7 +34,6 @@ struct HomeScreen: View {
             }
             .navigationDestination(isPresented: $viewModel.isShowingRecipe) {
                 RecipeView(
-                    isPresented: $viewModel.isShowingRecipe,
                     recipe: viewModel.fullRecipe
                 )
             }
@@ -51,6 +50,9 @@ struct HomeScreen: View {
     
     
     // MARK: - Views
+    
+    
+    /// Shows the list of desserts
     private var listRecipe: some View {
         VStack {
             if let desserts = viewModel.desserts {
@@ -78,6 +80,9 @@ struct HomeScreen: View {
     }
     
     
+    /// Creates a button that when tapped, will fetch the full recipe and transition the screen to RecipeView
+    /// - Parameter dessert: MealListItem object
+    /// - Returns: A View Button
     private func btnViewRecipe(_ dessert: MealListItem) -> some View {
         Button(action: {
             Task {

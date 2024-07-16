@@ -11,7 +11,6 @@ struct RecipeView: View {
     
     @State var title: String = "Full recipe"
     @State var thumbnail: Image?
-    @Binding var isPresented: Bool
     var recipe: RecipeList
     
     // MARK: - Body
@@ -25,7 +24,7 @@ struct RecipeView: View {
                     .frame(maxWidth: .infinity, alignment: .center)
                     .listRowSeparator(.hidden)
                 
-                Text("Ingredients and Measurements")
+                Text("Ingredients & Measurements")
                     .font(.title2)
                     .underline()
                     .frame(maxWidth: .infinity, alignment: .center)
@@ -55,7 +54,7 @@ struct RecipeView: View {
             .listStyle(.plain)
         }
         .navigationTitle(title)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.automatic)
     }
     
     // MARK: - Functions
@@ -107,5 +106,5 @@ struct RecipeView: View {
 
 #Preview {
     @State var stubBool = false
-    return RecipeView(isPresented: $stubBool, recipe: RecipeList())
+    return RecipeView(recipe: RecipeList())
 }
