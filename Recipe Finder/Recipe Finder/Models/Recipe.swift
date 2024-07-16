@@ -156,51 +156,54 @@ struct Recipe: Identifiable, Codable, DictionaryConvertible {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         id = UUID()
-        strMeal = try container.decode(String.self, forKey: .strMeal)
-        strInstructions = try container.decode(String.self, forKey: .strInstructions)
-        strMealThumb = try container.decode(String.self, forKey: .strMealThumb)
         
-        strIngredient1 = try container.decode(String.self, forKey: .strIngredient1)
-        strIngredient2 = try container.decode(String.self, forKey: .strIngredient2)
-        strIngredient3 = try container.decode(String.self, forKey: .strIngredient3)
-        strIngredient4 = try container.decode(String.self, forKey: .strIngredient4)
-        strIngredient5 = try container.decode(String.self, forKey: .strIngredient5)
-        strIngredient6 = try container.decode(String.self, forKey: .strIngredient6)
-        strIngredient7 = try container.decode(String.self, forKey: .strIngredient7)
-        strIngredient8 = try container.decode(String.self, forKey: .strIngredient8)
-        strIngredient9 = try container.decode(String.self, forKey: .strIngredient9)
-        strIngredient10 = try container.decode(String.self, forKey: .strIngredient10)
-        strIngredient11 = try container.decode(String.self, forKey: .strIngredient11)
-        strIngredient12 = try container.decode(String.self, forKey: .strIngredient12)
-        strIngredient13 = try container.decode(String.self, forKey: .strIngredient13)
-        strIngredient14 = try container.decode(String.self, forKey: .strIngredient14)
-        strIngredient15 = try container.decode(String.self, forKey: .strIngredient15)
-        strIngredient16 = try container.decode(String.self, forKey: .strIngredient16)
-        strIngredient17 = try container.decode(String.self, forKey: .strIngredient17)
-        strIngredient18 = try container.decode(String.self, forKey: .strIngredient18)
-        strIngredient19 = try container.decode(String.self, forKey: .strIngredient19)
-        strIngredient20 = try container.decode(String.self, forKey: .strIngredient20)
+        // Use `decodeIfPresent` to allow optionals instead of forcing String.
+        // Some recipes use `null` instead of the empty string
+        strMeal = try container.decodeIfPresent(String.self, forKey: .strMeal) ?? ""
+        strInstructions = try container.decodeIfPresent(String.self, forKey: .strInstructions) ?? ""
+        strMealThumb = try container.decodeIfPresent(String.self, forKey: .strMealThumb) ?? ""
         
-        strMeasure1 = try container.decode(String.self, forKey: .strMeasure1)
-        strMeasure2 = try container.decode(String.self, forKey: .strMeasure2)
-        strMeasure3 = try container.decode(String.self, forKey: .strMeasure3)
-        strMeasure4 = try container.decode(String.self, forKey: .strMeasure4)
-        strMeasure5 = try container.decode(String.self, forKey: .strMeasure5)
-        strMeasure6 = try container.decode(String.self, forKey: .strMeasure6)
-        strMeasure7 = try container.decode(String.self, forKey: .strMeasure7)
-        strMeasure8 = try container.decode(String.self, forKey: .strMeasure8)
-        strMeasure9 = try container.decode(String.self, forKey: .strMeasure9)
-        strMeasure10 = try container.decode(String.self, forKey: .strMeasure10)
-        strMeasure11 = try container.decode(String.self, forKey: .strMeasure11)
-        strMeasure12 = try container.decode(String.self, forKey: .strMeasure12)
-        strMeasure13 = try container.decode(String.self, forKey: .strMeasure13)
-        strMeasure14 = try container.decode(String.self, forKey: .strMeasure14)
-        strMeasure15 = try container.decode(String.self, forKey: .strMeasure15)
-        strMeasure16 = try container.decode(String.self, forKey: .strMeasure16)
-        strMeasure17 = try container.decode(String.self, forKey: .strMeasure17)
-        strMeasure18 = try container.decode(String.self, forKey: .strMeasure18)
-        strMeasure19 = try container.decode(String.self, forKey: .strMeasure19)
-        strMeasure20 = try container.decode(String.self, forKey: .strMeasure20)
+        strIngredient1 = try container.decodeIfPresent(String.self, forKey: .strIngredient1) ?? ""
+        strIngredient2 = try container.decodeIfPresent(String.self, forKey: .strIngredient2) ?? ""
+        strIngredient3 = try container.decodeIfPresent(String.self, forKey: .strIngredient3) ?? ""
+        strIngredient4 = try container.decodeIfPresent(String.self, forKey: .strIngredient4) ?? ""
+        strIngredient5 = try container.decodeIfPresent(String.self, forKey: .strIngredient5) ?? ""
+        strIngredient6 = try container.decodeIfPresent(String.self, forKey: .strIngredient6) ?? ""
+        strIngredient7 = try container.decodeIfPresent(String.self, forKey: .strIngredient7) ?? ""
+        strIngredient8 = try container.decodeIfPresent(String.self, forKey: .strIngredient8) ?? ""
+        strIngredient9 = try container.decodeIfPresent(String.self, forKey: .strIngredient9) ?? ""
+        strIngredient10 = try container.decodeIfPresent(String.self, forKey: .strIngredient10) ?? ""
+        strIngredient11 = try container.decodeIfPresent(String.self, forKey: .strIngredient11) ?? ""
+        strIngredient12 = try container.decodeIfPresent(String.self, forKey: .strIngredient12) ?? ""
+        strIngredient13 = try container.decodeIfPresent(String.self, forKey: .strIngredient13) ?? ""
+        strIngredient14 = try container.decodeIfPresent(String.self, forKey: .strIngredient14) ?? ""
+        strIngredient15 = try container.decodeIfPresent(String.self, forKey: .strIngredient15) ?? ""
+        strIngredient16 = try container.decodeIfPresent(String.self, forKey: .strIngredient16) ?? ""
+        strIngredient17 = try container.decodeIfPresent(String.self, forKey: .strIngredient17) ?? ""
+        strIngredient18 = try container.decodeIfPresent(String.self, forKey: .strIngredient18) ?? ""
+        strIngredient19 = try container.decodeIfPresent(String.self, forKey: .strIngredient19) ?? ""
+        strIngredient20 = try container.decodeIfPresent(String.self, forKey: .strIngredient20) ?? ""
+        
+        strMeasure1 = try container.decodeIfPresent(String.self, forKey: .strMeasure1) ?? ""
+        strMeasure2 = try container.decodeIfPresent(String.self, forKey: .strMeasure2) ?? ""
+        strMeasure3 = try container.decodeIfPresent(String.self, forKey: .strMeasure3) ?? ""
+        strMeasure4 = try container.decodeIfPresent(String.self, forKey: .strMeasure4) ?? ""
+        strMeasure5 = try container.decodeIfPresent(String.self, forKey: .strMeasure5) ?? ""
+        strMeasure6 = try container.decodeIfPresent(String.self, forKey: .strMeasure6) ?? ""
+        strMeasure7 = try container.decodeIfPresent(String.self, forKey: .strMeasure7) ?? ""
+        strMeasure8 = try container.decodeIfPresent(String.self, forKey: .strMeasure8) ?? ""
+        strMeasure9 = try container.decodeIfPresent(String.self, forKey: .strMeasure9) ?? ""
+        strMeasure10 = try container.decodeIfPresent(String.self, forKey: .strMeasure10) ?? ""
+        strMeasure11 = try container.decodeIfPresent(String.self, forKey: .strMeasure11) ?? ""
+        strMeasure12 = try container.decodeIfPresent(String.self, forKey: .strMeasure12) ?? ""
+        strMeasure13 = try container.decodeIfPresent(String.self, forKey: .strMeasure13) ?? ""
+        strMeasure14 = try container.decodeIfPresent(String.self, forKey: .strMeasure14) ?? ""
+        strMeasure15 = try container.decodeIfPresent(String.self, forKey: .strMeasure15) ?? ""
+        strMeasure16 = try container.decodeIfPresent(String.self, forKey: .strMeasure16) ?? ""
+        strMeasure17 = try container.decodeIfPresent(String.self, forKey: .strMeasure17) ?? ""
+        strMeasure18 = try container.decodeIfPresent(String.self, forKey: .strMeasure18) ?? ""
+        strMeasure19 = try container.decodeIfPresent(String.self, forKey: .strMeasure19) ?? ""
+        strMeasure20 = try container.decodeIfPresent(String.self, forKey: .strMeasure20) ?? ""
         
         // Compact the array to eliminate all nil values
         ingredientsAndMeasurements = [

@@ -49,11 +49,9 @@ extension HomeScreen {
         
         func fetchRecipe(with mealId: String) async throws -> RecipeList {
             let urlString = "\(API_LOOKUP_MEAL_ID)\(mealId)"
-//            isShowingAlert = true
-            
             
             guard let url = URL(string: urlString) else {
-//                print("couldn't make into url")
+                print("couldn't make into url")
                 isShowingAlert = true
                 throw NSError(domain: "Couldn't make into url", code: 1)
             }
@@ -66,12 +64,16 @@ extension HomeScreen {
             
             // Check if request was successful
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-//                print("response NOT 200")
+                print("response NOT 200")
                 isShowingAlert = true
                 throw URLError(.badServerResponse)
             }
             
             let recipe = try JSONDecoder().decode(RecipeList.self, from: data)
+            guard !recipe.meals.isEmpty else {
+                isShowingAlert = true
+                throw NSError(domain: "Couldn't decode", code: 2)
+            }
 //            print("recipe:", recipe)
             
             return recipe

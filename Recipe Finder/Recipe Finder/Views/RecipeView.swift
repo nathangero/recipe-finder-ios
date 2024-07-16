@@ -56,14 +56,6 @@ struct RecipeView: View {
         }
         .navigationTitle(title)
         .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button(action: {
-                    // Ensure app will open a new recipe from the list
-                    isPresented = false
-                }) {}
-            }
-        }
     }
     
     // MARK: - Functions
